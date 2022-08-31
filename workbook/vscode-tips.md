@@ -14,7 +14,7 @@
   * [Awk](https://marketplace.visualstudio.com/items?itemName=luggage66.AWK) -- provide syntax highlighting for Awk programming. I've noticed a few error in the syntax coloring but I still find it useful.
 
 
-## Configuration of the integrade terminal in VS Code
+## Configuration of the integrated terminal in VS Code
 
 * Set the terminal to use "xterm" when connecting to a Linux external -- In "Settings" ("⌘-," on Mac; "ctrl-," on Windows)  search for `terminal linux exec` in the search bar. In the field for `Terminal > External: Linux Exec` enter `xterm`.  When you connect to your VM via the VS Code integrated terminal this should give you coloring of terminal commands like grep(assuming you're using the default `.bashrc` settings that your VM came configured with)
 
