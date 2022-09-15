@@ -102,6 +102,8 @@ For details about each of these commands:
 
 -----
 
+## Practical computing tips
+
 ### Downloading files using `wget`
 
 - `wget` is a command line tool that can be used to download a file directly to your VM (rather than having to download to your laptop and then re-upload to your VM). The most common usage of wget is of the form:
