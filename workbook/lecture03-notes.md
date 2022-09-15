@@ -63,8 +63,9 @@ grep -v "^#" yeast.gff
     * The `-v` option means to invert the sense of the matching regular expression (i.e. return all lines that DO NOT match the regular expression)
 
 
-- Before filtering comments and metadata
+- Before filtering comments and metadata 
 
+    NOTE: output width truncated to provide compact representation
     ```
     ~$ head yeast.gff 
     ##gff-version 3
@@ -80,6 +81,8 @@ grep -v "^#" yeast.gff
     ```
 
 - After filtering comments and metadata
+
+    NOTE: output width truncated to provide compact representation
 
     ```
     ~$ grep -v "^#" yeast.gff | head 
