@@ -1,5 +1,19 @@
 ## Post-lecture notes: Class Session 3
 
+- [Post-lecture notes: Class Session 3](#post-lecture-notes-class-session-3)
+  - [Biological Motivations](#biological-motivations)
+  - [Computational Motivations](#computational-motivations)
+  - [Example data](#example-data)
+  - [Filtering out GFF comments and meta data using `grep`](#filtering-out-gff-comments-and-meta-data-using-grep)
+  - [Subsetting columns using `cut`](#subsetting-columns-using-cut)
+  - [Counting features on a specific chromosome `grep`](#counting-features-on-a-specific-chromosome-grep)
+  - [New commands introduced in class](#new-commands-introduced-in-class)
+  - [Command we didn't have time to discuss in class but I'd like you to explore on your own](#command-we-didnt-have-time-to-discuss-in-class-but-id-like-you-to-explore-on-your-own)
+- [Practical computing tips](#practical-computing-tips)
+  - [Downloading files using `wget`](#downloading-files-using-wget)
+  - [Decompressing compressed `.gz` files with `gunzip`](#decompressing-compressed-gz-files-with-gunzip)
+  - [Setting up symbolic lines with `ln -s`](#setting-up-symbolic-lines-with-ln--s)
+
 ### Biological Motivations
 
 - Genome annotation represents our current best understanding of the functional "parts" encoded in genomes
