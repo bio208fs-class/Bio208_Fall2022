@@ -31,13 +31,70 @@
 ### Example data
 
 - Yeast Genome Sequence (FASTA) -- https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.fna.gz
+    * Read about the [FASTA format here](https://zhanggroup.org/FASTA/)
+
 - Yeast Genome Annotation (GFF) -- https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.gff.gz
+    * Read about the [GFF annotation format here](./gff-annotation.md)
 
-- For some details about the yeast genome see: https://www.ncbi.nlm.nih.gov/genome/15
+    - For some details about the yeast genome see: https://www.ncbi.nlm.nih.gov/genome/15 . See the table at the bottom that gives the correspondence between RefSeq IDs and chromosome #'s
 
-    -- see the table at the bottom that gives the correspondence between RefSeq IDs and chromosome #'s
+- The most convenient way to get these files onto your VM is to use the [`wget` command](#downloading-files-using-wget)
 
-The most convenient way to get these files onto your VM is to use the [`wget` command](#downloading-files-using-wget). I also recommend you [setup symbolic links](#seting-up-symbolic-lines-with-ln--s) so you can refer to the files above as `yeast.fna` and `yeast.gff`.
+- I also recommend you [setup symbolic links](#setting-up-symbolic-lines-with-ln--s) so you can refer to the files above as `yeast.fna` and `yeast.gff`
+
+
+### Filtering out GFF comments and meta data
+
+- GFF files usually contain comments and meta data. 
+
+
+
+
+For the analyses we want to do, it will be convient to remove these lines. We can do this with a call to `grep`:
+
+```
+grep -v "^#" yeast.gff
+```
+
+- Explanation:
+
+    * In grep regular expressions the carrot symbol `^` means "at the beginning of a line". So the pattern `"^#"` means "find lines that start with the hash symbol"
+
+    * The `-v` option means to invert the sense of the matching regular expression (i.e. return all lines that DO NOT match the regular expression)
+
+
+- Before filtering comments and metadata
+
+    ```
+    ~$ head yeast.gff 
+    ##gff-version 3
+    #!gff-spec-version 1.21
+    #!processor NCBI annotwriter
+    #!genome-build R64
+    #!genome-build-accession NCBI_Assembly:G
+    #!annotation-source SGD R64-3-1
+    ##sequence-region NC_001133.9 1 230218
+    ##species https://www.ncbi.nlm.nih.gov/T
+    NC_001133.9	RefSeq	region	1	230218	.	+	.
+    NC_001133.9	RefSeq	telomere	1	801	.	-	.
+    ```
+
+- After filtering comments and metadata
+
+    ```
+    ~$ grep -v "^#" yeast.gff | head 
+    NC_001133.9	RefSeq	region	1	230218	.	+	.
+    NC_001133.9	RefSeq	telomere	1	801	.	-	.	
+    NC_001133.9	RefSeq	origin_of_replication
+    NC_001133.9	RefSeq	gene	1807	2169	.	-	.	
+    NC_001133.9	RefSeq	mRNA	1807	2169	.	-	.	
+    NC_001133.9	RefSeq	exon	1807	2169	.	-	.	
+    NC_001133.9	RefSeq	CDS	1807	2169	.	-	0	I
+    NC_001133.9	RefSeq	gene	2480	2707	.	+	.	
+    NC_001133.9	RefSeq	mRNA	2480	2707	.	+	.	
+    NC_001133.9	RefSeq	exon	2480	2707	.	+	.	
+    ```
+
 
 
 
@@ -138,7 +195,7 @@ For details about each of these commands:
 
 
 
-### Seting up symbolic lines with `ln -s`
+### Setting up symbolic lines with `ln -s`
 
 - When working with data provided by third parties it is good practice to preserve file naming schemes.  For example, the file name `GCF_000146045.2_R64_genomic.fna` includes important meta information -- "GCF_000146045.2" is the official RefSeq identifier for this version of the yeast genome (see https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000146045.2/) and the "R64" tells us this is revision 64. 
 
