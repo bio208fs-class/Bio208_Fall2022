@@ -43,14 +43,9 @@
 - I also recommend you [setup symbolic links](#setting-up-symbolic-lines-with-ln--s) so you can refer to the files above as `yeast.fna` and `yeast.gff`
 
 
-### Filtering out GFF comments and meta data
+### Filtering out GFF comments and meta data using `grep`
 
-- GFF files usually contain comments and meta data. 
-
-
-
-
-For the analyses we want to do, it will be convient to remove these lines. We can do this with a call to `grep`:
+- GFF files usually contain comments and meta data. For the analyses we want to do, it will be convient to remove these lines. We can do this with a call to `grep`:
 
 ```
 grep -v "^#" yeast.gff
@@ -82,10 +77,8 @@ grep -v "^#" yeast.gff
 
 - After filtering comments and metadata
 
-    NOTE: output width truncated to provide compact representation
-
     ```
-    ~$ grep -v "^#" yeast.gff | head 
+    ~$ grep -v "^#" yeast.gff 
     NC_001133.9	RefSeq	region	1	230218	.	+	.
     NC_001133.9	RefSeq	telomere	1	801	.	-	.	
     NC_001133.9	RefSeq	origin_of_replication
@@ -98,14 +91,46 @@ grep -v "^#" yeast.gff
     NC_001133.9	RefSeq	exon	2480	2707	.	+	.	
     ```
 
+### Subsetting columns using `cut`
+
+- The `cut` command allows us to extract specific columns from a tabular data file (tab-delimited by default)
+
+- For example to extract columns 1, and the range 3-5, we can use `cut` like so:
+
+    ```
+    ~$ grep -v "^#" yeast.gff | cut -f 1,3-5 
+    NC_001133.9	region	1	230218
+    NC_001133.9	telomere	1	801
+    NC_001133.9	origin_of_replication	707	776
+    NC_001133.9	gene	1807	2169
+    NC_001133.9	mRNA	1807	2169
+    NC_001133.9	exon	1807	2169
+    NC_001133.9	CDS	1807	2169
+    NC_001133.9	gene	2480	2707
+    NC_001133.9	mRNA	2480	2707
+    NC_001133.9	exon	2480	2707
+    ```
+
+- Explanation
+
+    * The `-f` option in `cut` is used to specify the fields (columns) to return. This option accepts field number separated by commas or a range of fields in the form `start-end`
+
+### Counting features on a specific chromosome `grep`
+
+- Sometimes we want to match strings and get a count of matches. For example, if we wanted to count the features on Chromsome II of the yeast genome (seqid = NC_001134.8) we could do this:
+
+```
+~$ grep -v "^#" yeast.gff | cut -f 1 | grep -c "NC_001134.8" 
+1835
+```
+
+- Explanation
+
+    * The `-c` option tells grep to count lines with matches rather than returning the matched lines
 
 
 
-### New commands introduced
-
-For details about each of these commands:
-    - Read my overview of the [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob/main/workbook/unix-coreutils.md)
-    - Then take a look at the `man` pages (e.g. `man echo`) to read about various options 
+### New commands introduced in class
 
 * `less`
 * `head` 
@@ -114,12 +139,18 @@ For details about each of these commands:
 * `cat` and `tac`
 * `rev`
 * `fold`
+* `cut`
 * Redirection operators: 
     - `>` = redirect output to a file
         - `echo Hello World > hello.txt`
     - `>>` = append output to a file 
         - `echo Goodbye World >> hello.txt`
     - `<` = redirect input to a command
+
+For details about each of these commands:
+    - Read my overview of the [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob/main/workbook/unix-coreutils.md)
+    - Then take a look at the `man` pages (e.g. `man echo`) to read about various options 
+
 
 
 ### Command we didn't have time to discuss in class but I'd like you to explore on your own
@@ -130,8 +161,11 @@ For details about each of these commands:
     - `echo "Can you read sentences without vowels?" | tr -d 'aeiou'` -- delete all vowels
     - `echo AATTAGACCAAC | tr "ATCG" "TAGC"` -- computes the complement of a DNA nucleotide sequences
 
-- `sort` 
+- `sort` -- sort the lines of a file. 
 
+- `uniq` -- report/omit adjacent repeated lines. The adjacency requirement means you usually need to sort the input first.
+
+See [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob/main/workbook/unix-coreutils.md) for examples of how use these commands.
 
 ### Examples of computations on genome annotation using grep and cut
 
