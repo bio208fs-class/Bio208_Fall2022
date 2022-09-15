@@ -167,31 +167,6 @@ For details about each of these commands:
 
 See [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob/main/workbook/unix-coreutils.md) for examples of how use these commands.
 
-### Examples of computations on genome annotation using grep and cut
-
-* Filtering metadata lines out of a GFF file using `grep`
-
-    ```
-    grep -E -v "^#" yeast.gff
-    ```
-
-* Getting specific columns (seqid = 1, feature type = 3) from the GFF file
-
-    ```
-    grep -E -v "^#" yeast.gff | cut -f 1,3
-    ```
-
-*  How many features are there on yeast chromosome II (NC_001134.8)?
-
-    ```
-    grep -E -v "^#" yeast.gff | cut -f 1 | grep -c "NC_001134.8" 
-    ```
-
-*  How many exons are there on yeast chromosome II (NC_001134.8)?
-
-    ```
-    grep -E -v "^#" yeast.gff | cut -f 1,3 | grep "NC_001134.8" |  grep -c "exon" 
-    ```
 
 
 -----
