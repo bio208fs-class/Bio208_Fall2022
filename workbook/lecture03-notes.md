@@ -12,7 +12,7 @@
 - [Practical computing tips](#practical-computing-tips)
   - [Downloading files using `wget`](#downloading-files-using-wget)
   - [Decompressing compressed `.gz` files with `gunzip`](#decompressing-compressed-gz-files-with-gunzip)
-  - [Setting up symbolic lines with `ln -s`](#setting-up-symbolic-lines-with-ln--s)
+  - [Setting up symbolic links with `ln -s`](#setting-up-symbolic-links-with-ln--s)
 
 ### Biological Motivations
 
@@ -221,7 +221,7 @@ See [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob
 
 
 
-### Setting up symbolic lines with `ln -s`
+### Setting up symbolic links with `ln -s`
 
 - When working with data provided by third parties it is good practice to preserve file naming schemes.  For example, the file name `GCF_000146045.2_R64_genomic.fna` includes important meta information -- "GCF_000146045.2" is the official RefSeq identifier for this version of the yeast genome (see https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000146045.2/) and the "R64" tells us this is revision 64. 
 
