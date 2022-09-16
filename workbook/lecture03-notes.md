@@ -232,13 +232,19 @@ See [Unix Core Utilities](https://github.com/bio208fs-class/Bio208_Fall2022/blob
 - The general form of creating a symbolic link is as follows:
 
     ```
-    ln -s ORIGINAL_FILE SHORT_NAME
+    ln -s SOURCE_FILE SYMBOLIC_LINK
     ```
 
 - For example, to create an alias with a more easily understood name than `GCF_000146045.2_R64_genomic.fna` we could do the following:
 
     ```
     ln -s GCF_000146045.2_R64_genomic.fna yeast.fna
+    ```
+
+- If the source file is in a different directory than the one where you want to create the link in your home directory you could do the following:
+
+    ```
+    ln -s path/to/the/directory/GCF_000146045.2_R64_genomic.fna ~/yeast.fna
     ```
 
 - Once the symbolic link is created `yeast.fna` refers to `GCF_000146045.2_R64_genomic.fna` and we can substitute this symbolic link for the longer name when executing commands. For example, the following is more convenient, but in reality still reads from `GCF_000146045.2_R64_genomic.fna` "behind the scenes":
