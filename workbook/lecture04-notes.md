@@ -210,11 +210,19 @@ BEGIN {
 # go immediately to the next line when a comment line is encountered
 /^#/ { next  }  
 
+# Combining two regular expression with an "AND" operator (&&)
 # !~ /<regex>/ means "doesn't match the regular expresssion
 $8 ~ /^Drosophila/ && $8 !~ /melanogaster/ { print $8 }
 ```
 
-We can combine this with `sort` and `uniq` to get a count of each non-melanogaster Drosophila species
+Explanation of the Awk program:
+* `next` is statement that causes awk to stop evaluating any further rules for the current line and go to the next line
+* We combined two regular expressions using the `&&` (AND) operator
+  * The OR operator is '||'
+* `!~ /<regex>/` means doesn't match the regular expresssion
+
+
+We can combine this awk program with `sort` and `uniq` to get a count of each non-melanogaster Drosophila species
 
 ```
 $ awk -f non_melanogaster.awk assembly_summary_genbank.txt | sort | uniq -c
@@ -222,19 +230,11 @@ $ awk -f non_melanogaster.awk assembly_summary_genbank.txt | sort | uniq -c
 
 
 
-## Using Awk to analyze GenBank assembly meta data
+## More on awk
 
-Analyze the assembly summary:
+For additional introductory notes on Awk see
 
-* How many assemblies are documented in `assebly
-
-* What are the top  10 taxa (column 8) in terms of number of assemblies?
-  * Look up info on each of these top 10 taxa.  Is there some commonality among them?  Speculate about why so much effort has gone into sequences the genomes of these taxa? 
-  * Column 7 ("species_taxid") is actually the better column to use but turning this into a human readable name requires cross-referencing to the NCBI taxonomy names -- see https://www.ncbi.nlm.nih.gov/taxonomy/ for info about the NCBI taxonomy; for raw taxonomy info see  `names.dmp` file included in the `taxdump.tar.gz` file here: https://ftp.ncbi.nih.gov/pub/taxonomy/
-  
+* My [Bio 724 notes on Awk](https://github.com/Bio724/Bio724-Lecture-Notes/blob/main/lecture-awk/awk.md)
+* [learnbyexample: Gnu Awk](https://learnbyexample.github.io/learn_gnuawk/)
  
-* What is the most recent assembly? Note: maybe too hard. Date parsing is non-trivial. I could however pre-parse date info and add it as accessory columns
-
-* How many assemblies are there for a given species (or genus)?  How many of these assemblies are "Chromosome" or "Complete genome" level (Column 12)
-
 
