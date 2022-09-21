@@ -80,8 +80,9 @@ All of the [commands for navigating and manipulating files and diretories](./nav
 * `sort` -- sorts lines of input
   - `sort file.txt` --  sort line in `file.txt`
   - `echo -e 'foo\nbar\nbaz\qux' | sort` 
-  - `sort -k 3 -n columns.txt` -- sort numerically on the 3rd field (column) of the data
-  - `sort -k 3 -n --debug columns.txt` -- the `--debug` option is useful when you're getting unexpected results. This highlights the field that `sort` is using in each line to do the sorting.
+  - `sort -k 3,3 -n columns.txt` -- sort numerically on the 3rd field (column) of the data
+  - `sort -k 3,3 -k 5,5 -n columns.txt` -- sort numerically on the 3rd column and then on the 5th of the data 
+  - `sort -k 3,3 -n --debug columns.txt` -- the `--debug` option is useful when you're getting unexpected results. This highlights the field(s) that `sort` is using in each line to do the sorting.
     - See [this page](./unexpected-sorting.md) and the [GNU FAQ](https://www.gnu.org/software/coreutils/faq/coreutils-faq.html#Sort-does-not-sort-in-normal-order_0021) if you've doubled and triple checked your commands and yet getting unexpected sorting results
 
 * `uniq` -- report/omit adjacent repeated lines.  The adjacency requirement means you usually need to sort the input first.
