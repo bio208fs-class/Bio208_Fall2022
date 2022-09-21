@@ -64,7 +64,7 @@ We have two options to fix this:
 1) Instead of `-n` use the `-g` (general numeric sort) option to sort which explicitly converts fields to floating point values prior to the sort.  This is slower than the `-n` option but returns the expected results:
 
     ```
-    sort -t, -k 2 -g -r test.csv
+    sort -t, -k 2,2 -g -r test.csv
     ```
 
     Yields:
@@ -84,7 +84,7 @@ We have two options to fix this:
     Now `sort -n` works as expected:
 
     ```
-    sort -t, -k 2 -n -r test.csv
+    sort -t, -k 2,2 -n -r test.csv
     ```
 
     returns:
