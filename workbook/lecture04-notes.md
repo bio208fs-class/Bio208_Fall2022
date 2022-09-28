@@ -160,7 +160,7 @@ $ awk -f extract_drosophila.awk assembly_snippet.tsv
 
 Explanation:
 * BEGIN rule applies at the start of input processing
-* `FS` is a special variable that refers to the input Field Separator (same as specifing `-F` at the command line)
+* `FS` is a special variable that refers to the input Field Separator (same as specifying `-F` at the command line)
 * `OFS` is a variable specifying the "Output Field Separator" -- the delimiter used for fields when printing from Awk. The default is spaces. Here we replace that with commas.
 * Do regular expression matching on the 8th field
 * Print the 1st, 8th, and 5th fields
