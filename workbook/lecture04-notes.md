@@ -101,7 +101,7 @@ $ awk -F "\t" -f extract_ref_assemblies.awk assembly_snippet.tsv
 
 Explanation:
 * `-F "\t"` tells awk that fields are tab delimited
-* The is one `pattern {action}` statement
+* There is one `pattern {action}` statement
 * We focus on Column 5 of the assembly meta data file which specifies whether the assembly is considered a reference genome in RefSeq
 * The `pattern` can be read as: "If the 5th field is equal to ``reference genome''"
 * the `action` can be read as: "Print the entire line" (`print` is a built-in Awk function)
