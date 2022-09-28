@@ -42,10 +42,10 @@ Awk (`awk`) is installed by default on pretty much every modern Unix-based syste
 
 It's easy to install gawk we'll use a program called `apt` which is the standard Ubuntu "package manager". You can think of a package manager as equivalent to the App Store on your phone or laptop.
 
-* Install GNU awk with the following command:
+* Install GNU awk  (gawk) with the following command:
 
     ```bash
-    $ sudo apt install parallel
+    $ sudo apt install gawk
     ```
 
 * When you execute this command you will be prompted to enter your password. On your Duke VM this password is your NetID password (i.e. the same password you use to login to the VM). 
