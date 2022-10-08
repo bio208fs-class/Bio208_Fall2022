@@ -1,0 +1,147 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(tidyverse)
+library(gggenes)
+```
+
+
+```{r}
+yeast_info <- read_tsv("~/Desktop/saccharomyces_assembly_info.tsv")
+```
+
+```{r}
+str(yeast_info)
+```
+
+```{r}
+yeast_info$`Sequence-Name`
+```
+```{r}
+yeast_info_renamed <-
+  yeast_info |> 
+  rename(sequence_name = `Sequence-Name`,
+         sequence_length = `Sequence-Length`,
+         seqid = `RefSeq-Accn`)
+
+```
+
+
+
+```{r}
+yeast_info_renamed |>
+  ggplot(aes(x = sequence_length, 
+             y = sequence_name)) +
+  geom_col(fill = "white", color='black', width = 0.5) + 
+  theme_classic()
+
+```
+
+```{r}
+yeast_info_renamed |>
+  filter(sequence_name != "MT") |>
+  ggplot(aes(x = sequence_length, 
+             y = as.factor(as.integer(as.roman(sequence_name))))) +
+  scale_y_discrete(breaks=1:17, 
+                   labels=as.character(as.roman(1:17)),
+                   limits = rev) +
+  geom_col(fill = "white", color='black', width = 0.5) + 
+  theme_classic()
+
+```
+
+
+```{r}
+yeast_ftrs <- read_tsv("~/Desktop/saccharomyces_genes_mRNAs_exons.tsv")
+```
+
+```{r}
+names(yeast_ftrs)
+```
+```{r}
+
+# Create the 
+joined_data <- 
+  inner_join(yeast_ftrs, yeast_info_renamed, by="seqid") |>
+  mutate(midpoint = (start + end)/2)
+
+yeast_info_renamed |>
+  ggplot(aes(x = sequence_length, 
+             y = sequence_name)) +
+  geom_col(fill = "white", color='black', width = 0.5) +
+  geom_point(data = joined_data,
+             mapping = aes(x = midpoint, 
+                           y = sequence_name),
+             size = 0.25,
+             alpha = 0.1) + 
+  theme_classic()
+
+```
+
+
+
+
+
+
+```{r}
+roi <-
+  joined_data |>
+  dplyr::filter(type == "gene") |>
+  dplyr::filter(sequence_name == "I") |>
+  dplyr::filter(start >= 125000, end <= 140000) |>
+  dplyr::mutate(orientation = (strand == "+"))
+
+ggplot(roi, aes(xmin = start, 
+                xmax = end, 
+                y = sequence_name,
+                fill = gene_name, 
+                forward = orientation)) + 
+  geom_gene_arrow()
+
+```
+
+
+
+
+
+
+
+
+```{r}
+A <- tibble(names = c("Paul","Maira", "Beatriz", "Emilia"),
+            ages = c(51, 15, 12, 49))
+
+B <- tibble(names = c("Paul","Maira","Emilia"),
+            socsec = c(1213, 345, 949))
+   
+AB <- inner_join(A, B, by="names")
+AB
+
+
+adult <- c("Paul", "Beatriz")
+
+A |>
+  filter(names %in% adult ) |>
+  mutate(age_status = "adult")
+
+
+```
+         
+
+
+```{r}
+A
+```
+```{r}
+B
+```
+
+
+
+
+
