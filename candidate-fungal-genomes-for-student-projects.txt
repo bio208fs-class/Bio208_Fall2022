@@ -1,0 +1,50 @@
+
+Aspergillus flavus NRRL3357 strain=NRRL3357  GCF_014117465.1
+Aspergillus fumigatus Af293 strain=Af293  GCF_000002655.1
+Aspergillus nidulans FGSC A4 strain=FGSC A4  GCF_000011425.1
+Aspergillus oryzae RIB40 strain=RIB40  GCF_000184455.2
+Brettanomyces bruxellensis strain=UCD 2041  GCF_011074885.1
+Candida albicans SC5314 strain=SC5314  GCF_000182965.3
+[Candida] glabrata strain=CBS 138  GCF_000002545.3
+Cryptococcus gattii WM276 strain=WM276  GCF_000185945.1
+Cryptococcus neoformans var. grubii H99 strain=H99  GCF_000149245.1
+Cryptococcus neoformans var. neoformans JEC21 strain=JEC21  GCF_000091045.1
+Debaryomyces hansenii CBS767 strain=CBS767  GCF_000006445.2
+Kluyveromyces lactis strain=NRRL Y-1140  GCF_000002515.2
+Malassezia restricta strain=KCTC 27527  GCF_003290485.1
+Neurospora crassa OR74A strain=OR74A  GCF_000182925.2
+Scheffersomyces stipitis CBS 6054 strain=CBS 6054  GCF_000209165.1
+Schizosaccharomyces pombe strain=972h-  GCF_000002945.1
+Ustilago maydis 521 strain=521  GCF_000328475.2
+
+
+
+Psilocybe cubensis strain=MGC-MH-2018  GCF_017499595.1
+Fusarium fujikuroi IMI 58289 strain=IMI 58289  GCF_900079805.1
+Fusarium graminearum PH-1 strain=PH-1; NRRL 31084  GCF_000240135.3
+Fusarium musae strain=F31  GCF_019915245.1
+Fusarium oxysporum f. sp. lycopersici 4287 strain=4287  GCF_000149955.1
+Fusarium poae strain=DAOMC 252244  GCF_019609905.1
+Fusarium pseudograminearum CS3096 strain=CS3096  GCF_000303195.2
+Fusarium venenatum strain=A3/5  GCF_900007375.1
+
+
+Kluyveromyces marxianus DMKU3-1042 strain=DMKU3-1042  GCF_001417885.1
+
+
+Pichia kudriavzevii strain=CBS573  GCF_003054445.1
+Pochonia chlamydosporia 170  170 GCF_001653235.2
+
+Puccinia striiformis f. sp. tritici strain=134E16A+17+33+  GCF_021901695.1
+Purpureocillium takamizusanense strain=PT3  GCF_022605165.1
+Pyricularia grisea strain=NI907  GCF_004355905.1
+Pyricularia oryzae 70-15 strain=70-15  GCF_000002495.2
+Pyricularia pennisetigena strain=Br36  GCF_004337985.1
+Rhizoctonia solani strain=AG-1 IA XN GCF_016906535.1
+Saccharomyces cerevisiae S288C strain=S288C  GCF_000146045.2
+Saccharomyces eubayanus strain=FM1318  GCF_001298625.1
+Saccharomyces paradoxus strain=CBS432  GCF_002079055.1
+Saccharomycodes ludwigii strain=NBRC 1722  GCF_020623625.1
+
+
+Yarrowia lipolytica CLIB122 strain=CLIB122  GCF_000002525.2
